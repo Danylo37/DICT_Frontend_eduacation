@@ -1,3 +1,32 @@
-body {
-  background: #121212;
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
+
+img {
+  background-color: #c6c6c6;
+  border-color: #ff0404;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+}
+
+.form {
+  width: 15%;
+
+  form {
+    border-style: dashed;
+    border-width: 2px;
+    padding: 10px;
+  }
+}
+
+#name_form {
+  margin-bottom: 15px;
+}
+
+footer {
+  color: rgb(198, 198, 198);
+}
+
