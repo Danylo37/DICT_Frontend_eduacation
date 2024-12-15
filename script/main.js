@@ -1,26 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Toggle menu open/close on burger click
+    /**********************************
+     *          Burger menu           *
+     **********************************/
     document.getElementById("burger").addEventListener("click", function () {
         document.querySelector(".header").classList.toggle("open");
     });
 
-    // Track clicks inside the menu
     document.getElementById("menu").addEventListener("click", (event) => {
         event._isClickWithInMenu = true;
     });
 
-    // clicks on the burger
     document.getElementById("burger").addEventListener("click", (event) => {
         event._isClickWithInMenu = true;
     });
 
-    // Close menu when clicking outside
     document.body.addEventListener("click", (event) => {
         if (event._isClickWithInMenu) return;
         document.querySelector(".header").classList.remove("open");
     });
 
-    // Close menu when clicking any navigation button
     const navButtons = document.querySelectorAll("#menu a");
     navButtons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -28,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    /**********************************
+     *        Form validation         *
+     **********************************/
     const form = document.getElementById("contact-form");
     const formMessage = document.getElementById("form-message");
 
@@ -60,5 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
         formMessage.textContent = "Thank you for your message!";
         formMessage.style.color = "green";
         form.reset();
+    });
+
+    /**********************************
+     *         Accordion menu         *
+     **********************************/
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
     });
 });
