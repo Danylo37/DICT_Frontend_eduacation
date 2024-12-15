@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/**********************************
+ *       Global Styles            *
+ **********************************/
 html {
   scroll-behavior: smooth;
 }
@@ -8,13 +11,22 @@ html {
 }
 
 body {
-  margin: 0 auto;
   max-width: 1100px;
+  margin: 0 auto;
   padding: 0 20px;
   background-color: #DBDFFF;
   font-weight: 500;
 }
 
+.body-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/**********************************
+ *         Header Styles          *
+ **********************************/
 header {
   display: flex;
   align-items: center;
@@ -25,22 +37,29 @@ header {
   border-bottom: 1px solid black;
 }
 
+#logo {
+  width: 10%;
+}
 #logo img {
-  width: 90px;
+  width: 100%;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
 }
 
 .nav-button {
   font-weight: 600;
+  font-size: 28px;
   padding: 10px 40px;
+  margin-right: 25px;
   background-color: rgba(255, 255, 255, 0.75);
   color: rgba(50, 0, 189, 0.4);
   border: none;
   border-radius: 100px;
-  cursor: pointer;
-  font-size: 28px;
   box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.3s ease;
-  margin-right: 25px;
   display: inline-block;
   text-decoration: none;
 }
@@ -52,15 +71,57 @@ header {
   box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-main {
-  margin-left: 50px;
-  margin-right: 50px;
+.burger-btn {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  z-index: 2;
+}
+.burger-btn span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: black;
+  left: 5px;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.5s;
+  will-change: transform;
+}
+.burger-btn span:nth-child(1) {
+  transform: translateY(-10px);
+}
+.burger-btn span:nth-child(3) {
+  transform: translateY(10px);
+}
+.burger-btn:hover {
+  cursor: pointer;
+}
+.burger-btn:hover span {
+  background-color: rgba(50, 0, 189, 0.6);
 }
 
-#greeting {
-  color: black;
-  display: flex;
-  align-items: center;
+.header.open .burger-btn span:nth-child(1) {
+  background-color: white;
+  transform: translateY(0) rotate(45deg);
+}
+.header.open .burger-btn span:nth-child(2) {
+  opacity: 0;
+}
+.header.open .burger-btn span:nth-child(3) {
+  background-color: white;
+  transform: translateY(0) rotate(-45deg);
+}
+
+/**********************************
+ *          Main Styles           *
+ **********************************/
+main {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .main-blocks {
@@ -76,7 +137,26 @@ main {
   margin-bottom: 20px;
 }
 
+.main-blocks-title {
+  margin-left: 20px;
+  font-weight: 700;
+  font-size: 38px;
+}
+.main-blocks-title p {
+  margin: 0 0 10px;
+}
+
+/**********************************
+ *           Greeting             *
+ **********************************/
+#greeting {
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
 .greeting-text {
+  margin-right: 20px;
   padding-left: 20px;
   flex: 1;
 }
@@ -87,7 +167,7 @@ main {
 }
 
 .profession-font {
-  font-size: 52px;
+  font-size: 50px;
   margin-bottom: 0;
 }
 
@@ -95,30 +175,29 @@ main {
   font-size: 26px;
 }
 
-.about-button-div {
+.about-button-container {
   margin-top: 20px;
   margin-bottom: 50px;
   margin-left: 40px;
 }
 
-.block-button {
+.about-button {
   font-weight: inherit;
+  font-size: 28px;
   padding: 10px 30px;
   background-color: rgba(50, 0, 189, 0.75);
   color: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 100px;
-  font-size: 28px;
   box-shadow: 4px 4px 0 rgba(50, 0, 189, 0.25);
   transition: all 0.3s ease;
-  cursor: pointer;
   display: inline-block;
   text-decoration: none;
 }
-.block-button:hover {
-  color: rgba(255, 255, 255, 0.9);
+.about-button:hover {
+  color: white;
 }
-.block-button:active {
+.about-button:active {
   transform: translate(3px, 3px);
   box-shadow: 1px 1px 0 rgba(50, 0, 189, 0.4);
 }
@@ -130,15 +209,9 @@ main {
   width: 100%;
 }
 
-.main-blocks-title {
-  margin-left: 20px;
-  font-weight: 700;
-  font-size: 38px;
-}
-.main-blocks-title p {
-  margin: 0 0 10px;
-}
-
+/**********************************
+ *            About me            *
+ **********************************/
 .about-content {
   font-weight: 600;
   margin: 40px 40px 0;
@@ -179,6 +252,9 @@ main {
   cursor: default;
 }
 
+/**********************************
+ *             Skills             *
+ **********************************/
 .skill-container {
   display: flex;
   flex-wrap: wrap;
@@ -192,6 +268,7 @@ main {
   padding: 20px;
   text-align: center;
   width: 120px;
+  transition: transform 0.1s;
 }
 .skill-card img {
   max-width: 100px;
@@ -207,6 +284,9 @@ main {
   cursor: pointer;
 }
 
+/**********************************
+ *            Contact             *
+ **********************************/
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -215,37 +295,57 @@ main {
   gap: 20px;
 }
 
-.contact-form {
+#contact-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.button-container {
-  margin: 20px 30px 0;
-}
-
 form {
-  max-width: 25em;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  max-width: 300px;
   padding: 20px;
+  align-items: center;
 }
 form input, form textarea {
   font-size: 26px;
   font-weight: 500;
   border: none;
   outline: none;
-  width: 75%;
-  margin-bottom: 15px;
+  width: 100%;
+  margin-bottom: 0;
   padding: 10px;
   border-bottom: 1px solid black;
 }
-form input::placeholder, form input::placeholder, form textarea::placeholder, form textarea::placeholder {
+form input::placeholder, form textarea::placeholder {
   color: #aaa;
   font-style: italic;
 }
 form textarea {
   height: 40px;
   resize: none;
+}
+
+.send-message-button {
+  font-weight: inherit;
+  font-size: 28px;
+  padding: 10px 30px;
+  background-color: rgba(50, 0, 189, 0.75);
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 100px;
+  box-shadow: 4px 4px 0 rgba(50, 0, 189, 0.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.send-message-button:hover {
+  color: white;
+}
+.send-message-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 rgba(50, 0, 189, 0.4);
 }
 
 .contact-list {
@@ -275,10 +375,220 @@ form textarea {
   color: black;
 }
 
+/**********************************
+ *       Footer Styles            *
+ **********************************/
 footer {
+  font-size: 15px;
   margin-top: 50px;
   color: rgba(0, 0, 0, 0.2);
   text-align: center;
+}
+
+.footer-name {
+  font-size: 20px;
+}
+
+/**********************************
+ *        Media requests          *
+ **********************************/
+@media (max-width: 991px) {
+  .nav-button {
+    font-size: 22px;
+    margin-right: 15px;
+  }
+  .main-blocks {
+    padding: 25px;
+  }
+  .main-blocks hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .main-blocks-title {
+    font-size: 30px;
+  }
+  .hi-font {
+    font-size: 32px;
+  }
+  .profession-font {
+    font-size: 40px;
+  }
+  .hope-font {
+    font-size: 21px;
+  }
+  .about-button {
+    font-size: 23px;
+  }
+  .about-content {
+    margin: 20px 20px 0;
+  }
+  .about-text {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .about-list {
+    margin: 0 0 0 20px;
+  }
+  .about-list li {
+    font-size: 18px;
+  }
+  .check-skills {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .skill-container {
+    gap: 10px;
+  }
+  .skill-card {
+    width: 100px;
+  }
+  .skill-card img {
+    max-width: 80px;
+  }
+  .skill-card p {
+    font-size: 24px;
+  }
+  form {
+    max-width: 320px;
+    padding: 16px;
+  }
+  form input, form textarea {
+    font-size: 22px;
+  }
+  form textarea {
+    height: 32px;
+  }
+  .send-message-button {
+    font-size: 23px;
+  }
+  #form-message {
+    margin: 0 0 10px 0;
+  }
+  .contact-list {
+    gap: 16px;
+  }
+  .contact-item img {
+    width: 40px;
+    height: 40px;
+  }
+  .contact-item span {
+    font-size: 23px;
+  }
+  footer {
+    font-size: 12px;
+  }
+  .footer-name {
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    padding: 0;
+  }
+  header {
+    margin: 20px;
+  }
+  nav {
+    position: absolute;
+    right: -250px;
+    top: 0;
+    width: 250px;
+    background-color: rgba(50, 0, 189, 0.4);
+    border-radius: 0 0 0 40px;
+    visibility: hidden;
+    transition: transform 0.5s, visibility 0.5s;
+    will-change: transform;
+  }
+  .nav-list {
+    display: block;
+  }
+  .nav-button {
+    margin: 15px 0;
+  }
+  .burger-btn {
+    display: block;
+  }
+  .header.open nav {
+    transform: translateX(-100%);
+    visibility: visible;
+  }
+  .main-blocks {
+    padding: 15px;
+  }
+  .main-blocks-title {
+    font-size: 24px;
+  }
+  .hi-font {
+    font-weight: 600;
+    font-size: 26px;
+  }
+  .profession-font {
+    font-size: 28px;
+  }
+  .hope-font {
+    font-size: 16px;
+  }
+  .about-button {
+    font-size: 18px;
+  }
+  .about-content {
+    margin: 16px 16px 0;
+  }
+  .about-text {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .about-list {
+    margin: 0 0 0 16px;
+  }
+  .about-list li {
+    font-size: 14px;
+  }
+  .check-skills {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  .skill-container {
+    gap: 5px;
+  }
+  .skill-card {
+    width: 70px;
+  }
+  .skill-card img {
+    max-width: 60px;
+  }
+  .skill-card p {
+    font-size: 20px;
+  }
+  form input, form textarea {
+    font-size: 18px;
+  }
+  form textarea {
+    height: 26px;
+  }
+  .contact-list {
+    gap: 12px;
+  }
+  .contact-item img {
+    width: 36px;
+    height: 36px;
+  }
+  .contact-item span {
+    font-size: 18px;
+  }
+  footer {
+    font-size: 10px;
+  }
+  .footer-name {
+    font-size: 13px;
+  }
+}
+@media (max-width: 575px) {
+  main {
+    background-color: black;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
